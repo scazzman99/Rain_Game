@@ -10,6 +10,7 @@ public class RainDamage : MonoBehaviour {
     public float maxSize = 100f;
     public float rainDamage = 4f;
     public bool inCover;
+    public CharacterRescale changeSize; //gets the class of CharacterRescale so we can call resize
     #endregion
     // Use this for initialization
     void Start () {
@@ -37,6 +38,16 @@ public class RainDamage : MonoBehaviour {
         if(inCover == false)
         {
             playerSize -= rainDamage * Time.deltaTime; //Deplete Size over time
+            if (playerSize < 0)
+            {
+                playerSize = 0; //stop the health from going beneath 0
+            }
+
+            if(playerSize == 0)
+            {
+                playerRigid.gameObject.SetActive(false); //deactivate the player on death
+            }
+            changeSize.Rescale(playerSize, maxSize); //call function in another script to scale down the player size
             Debug.Log("Not in cover: DAMAGE TAKEN");
         }
     }
