@@ -8,6 +8,7 @@ public class CharacterRescale : MonoBehaviour {
     #region Vars
     public Rigidbody playerRigid;
     public Vector3 originalScale;
+    public 
     #endregion
     // Use this for initialization
     void Start () {
@@ -24,6 +25,12 @@ public class CharacterRescale : MonoBehaviour {
 
     public void Rescale(float playerHP, float maxHp)
     {
-        playerRigid.transform.localScale = originalScale * (playerHP / maxHp );
+       // playerRigid.transform.localScale = originalScale * (playerHP / maxHp );
+
+        Vector3 targetScale = originalScale * ((playerHP + 50f)  / (maxHp + 50f)); //added in 50f to make it so character doesnt turn invisably small on death
+        playerRigid.transform.localScale = targetScale;
+
     }
+
+   
 }

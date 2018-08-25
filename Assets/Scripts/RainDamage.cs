@@ -52,6 +52,31 @@ public class RainDamage : MonoBehaviour {
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("FireZone"))
+        {
+            ParticleSystem fireEffect = other.transform.Find("FireEffect").GetComponent<ParticleSystem>();
+            if (fireEffect.isPlaying == true)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    fireEffect.Stop();
+                    playerSize += 50f;
+                    if(playerSize > maxSize)
+                    {
+                        playerSize = maxSize;
+                    }
+                    changeSize.Rescale(playerSize, maxSize);
+                    
+
+                }
+            }
+        }
+    }
+
+  
+
 
 
 
