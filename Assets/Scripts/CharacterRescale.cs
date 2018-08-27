@@ -8,7 +8,7 @@ public class CharacterRescale : MonoBehaviour {
     #region Vars
     public Rigidbody playerRigid;
     public Vector3 originalScale;
-    public 
+   
     #endregion
     // Use this for initialization
     void Start () {

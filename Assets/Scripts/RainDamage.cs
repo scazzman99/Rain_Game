@@ -8,9 +8,13 @@ public class RainDamage : MonoBehaviour {
     public Rigidbody playerRigid;
     public float playerSize = 100f;
     public float maxSize = 100f;
+    public float excessSize = 150f;
     public float rainDamage = 4f;
+    public float excessBurnRate = 6f;
     public bool inCover;
+    public bool isExcess; //is the player over 100% hp
     public CharacterRescale changeSize; //gets the class of CharacterRescale so we can call resize
+    
     #endregion
     // Use this for initialization
     void Start () {
@@ -50,6 +54,23 @@ public class RainDamage : MonoBehaviour {
             changeSize.Rescale(playerSize, maxSize); //call function in another script to scale down the player size
             Debug.Log("Not in cover: DAMAGE TAKEN");
         }
+
+        if (isExcess)
+        {
+            playerSize -= excessBurnRate * Time.deltaTime;
+            if(playerSize < maxSize)
+            {
+                playerSize = maxSize;
+            }
+
+            if(playerSize == maxSize)
+            {
+                isExcess = false;
+                ChangeStats();
+            }
+            changeSize.Rescale(playerSize, maxSize);
+            Debug.Log("Burning Excess");
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -65,13 +86,31 @@ public class RainDamage : MonoBehaviour {
                     playerSize += 50f;
                     if(playerSize > maxSize)
                     {
-                        playerSize = maxSize;
+                        if(playerSize > excessSize)
+                        {
+                            playerSize = excessSize;
+                        }
+                        isExcess = true;
+                        ChangeStats();
                     }
                     changeSize.Rescale(playerSize, maxSize);
                     
 
                 }
             }
+        }
+    }
+
+    public void ChangeStats()
+    {
+        if (isExcess)
+        {
+            this.GetComponent<CharacterMovement>().speed = 8f;
+            this.GetComponent<CharacterMovement>().jumpSpeed = 12f;
+        } else
+        {
+            this.GetComponent<CharacterMovement>().speed = 4f;
+            this.GetComponent<CharacterMovement>().jumpSpeed = 8f;
         }
     }
 
