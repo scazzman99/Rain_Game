@@ -80,7 +80,7 @@ public class RainDamage : MonoBehaviour {
             ParticleSystem fireEffect = other.transform.Find("FireEffect").GetComponent<ParticleSystem>();
             if (fireEffect.isPlaying == true)
             {
-                if (Input.GetKeyDown(KeyCode.E))
+                /*if (Input.GetKeyDown(KeyCode.E))
                 {
                     fireEffect.Stop();
                     playerSize += 50f;
@@ -97,6 +97,13 @@ public class RainDamage : MonoBehaviour {
                     
 
                 }
+                */
+                playerSize += 30 * Time.deltaTime;
+                if(playerSize >= maxSize)
+                {
+                    playerSize = maxSize;
+                }
+                changeSize.Rescale(playerSize, maxSize);
             }
         }
     }
