@@ -56,9 +56,12 @@ public class CharacterMovement : MonoBehaviour {
                 moveDir = new Vector3(Input.GetAxis("Horizontal") * dashSpeed, Input.GetAxis("Vertical") * dashSpeed, 0);
                 force = new Vector3(moveDir.x, moveDir.y, 0);
                 dashDir = force;
-                GetComponent<RainDamage>().playerSize -= 8f * Time.deltaTime;
+                playerRigid.AddForce(dashDir, ForceMode.Impulse);
+                //takes more fuel to start the dash than maintain it?
+                GetComponent<RainDamage>().playerSize -= 5f;
                 GetComponent<CharacterRescale>().Rescale(GetComponent<RainDamage>().playerSize, GetComponent<RainDamage>().maxSize);
                 isDashing = true;
+                return;
             }
 
             playerRigid.velocity = force; //translate the force to the rigid body in form of movement
@@ -88,6 +91,17 @@ public class CharacterMovement : MonoBehaviour {
         Gizmos.color = Color.green;
         Gizmos.DrawLine(groundRay.origin, groundRay.origin + groundRay.direction * rayDistance);
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("DeathPit"))
+        {
+            
+            playerRigid.gameObject.SetActive(false);
+            Debug.Log("You have been extinguished");
+
+        }
     }
 
 
