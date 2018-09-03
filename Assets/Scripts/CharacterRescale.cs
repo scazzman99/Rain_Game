@@ -8,6 +8,7 @@ public class CharacterRescale : MonoBehaviour {
     #region Vars
     public Rigidbody playerRigid;
     public Vector3 originalScale;
+    public Vector3 currentScale;
    
     #endregion
     // Use this for initialization
@@ -15,6 +16,7 @@ public class CharacterRescale : MonoBehaviour {
 
         playerRigid = GameObject.Find("Player").GetComponent<Rigidbody>();
         originalScale = playerRigid.transform.localScale;
+        currentScale = originalScale;
 
 	}
 	
@@ -29,6 +31,7 @@ public class CharacterRescale : MonoBehaviour {
 
         Vector3 targetScale = originalScale * ((playerHP + 50f)  / (maxHp + 50f)); //added in 50f to make it so character doesnt turn invisably small on death
         playerRigid.transform.localScale = targetScale;
+        currentScale = targetScale;
 
     }
 

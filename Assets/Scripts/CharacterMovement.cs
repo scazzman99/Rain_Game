@@ -41,9 +41,10 @@ public class CharacterMovement : MonoBehaviour {
         {
 
             float inputH = Input.GetAxis("Horizontal") * speed;
+            float dirV = Input.GetAxis("Vertical");
 
 
-            Vector3 moveDir = new Vector3(inputH, 0, 0); //only allow general movement along x-axis
+            Vector3 moveDir = new Vector3(inputH, dirV, 0); //only allow general movement along x-axis. Allow for y input that only counts when dashing
             Vector3 force = new Vector3(moveDir.x, playerRigid.velocity.y, 0); //translate this to force for the rigid body
 
             if (Input.GetButton("Jump") && isGrounded())
@@ -101,7 +102,28 @@ public class CharacterMovement : MonoBehaviour {
             playerRigid.gameObject.SetActive(false);
             Debug.Log("You have been extinguished");
 
+        } else if (other.CompareTag("Wood"))
+        {
+            Debug.Log("Platform to destroy");
+            StartCoroutine(DestroyPlatform(other.gameObject));
+            StartCoroutine(RecreatePlatform(other.gameObject));
         }
+    }
+
+    //Coroutine to run to destroy a platform after it has been touched
+   IEnumerator DestroyPlatform(GameObject platform)
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        platform.SetActive(false);
+        
+
+    }
+
+    //Coroutine to recreate the platform that had been destroyed
+    IEnumerator RecreatePlatform(GameObject platform)
+    {
+        yield return new WaitForSecondsRealtime(5f);
+        platform.SetActive(true);
     }
 
 

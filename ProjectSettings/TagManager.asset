@@ -7,6 +7,7 @@ TagManager:
   - RainCover
   - FireZone
   - DeathPit
+  - Wood
   layers:
   - Default
   - TransparentFX
