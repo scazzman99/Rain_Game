@@ -10,6 +10,7 @@ public class PlatformMove : MonoBehaviour {
     public Transform pointA, pointB; //points the platform will travel between
     private bool movingTo = true; //bool to tell if we are moving a certain direction
     private bool isChanging; //bool to control the delay of the platform either side
+    public float platformSpeed;
     #endregion
     // Use this for initialization
     void Start () {
@@ -35,7 +36,7 @@ public class PlatformMove : MonoBehaviour {
             if(distance > 0.05f)
             {
                 //Move the playerHandle towards pointB
-                playerHandle.transform.position = Vector3.MoveTowards(playerHandle.transform.position, pointB.position, 1f*Time.deltaTime);
+                playerHandle.transform.position = Vector3.MoveTowards(playerHandle.transform.position, pointB.position, platformSpeed*Time.deltaTime);
             }
             //IF CLOSE
             else
@@ -52,7 +53,7 @@ public class PlatformMove : MonoBehaviour {
             float distance = Vector3.Distance(playerHandle.transform.position, pointA.position);
             if (distance > 0.05f)
             {
-                playerHandle.transform.position = Vector3.MoveTowards(playerHandle.transform.position, pointA.position, 1f*Time.deltaTime);
+                playerHandle.transform.position = Vector3.MoveTowards(playerHandle.transform.position, pointA.position, platformSpeed*Time.deltaTime);
             }
             else
             {
