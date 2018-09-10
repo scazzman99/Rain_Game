@@ -11,12 +11,14 @@ public class Drip : MonoBehaviour {
     public GameObject dripSpawn;
     public bool isDrip;
     public float dripRate;
+    
 
 
 	// Use this for initialization
 	void Start () {
         dir = Vector3.down;
-	}
+        playerHP = GameObject.FindGameObjectWithTag("Player").GetComponent<RainDamage>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -36,4 +38,6 @@ public class Drip : MonoBehaviour {
         yield return new WaitForSecondsRealtime(dripRate);
         isDrip = true;
     }
+
+    
 }

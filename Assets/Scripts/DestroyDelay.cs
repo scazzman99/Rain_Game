@@ -15,20 +15,6 @@ public class DestroyDelay : MonoBehaviour {
 		
 	}
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            RainDamage playerHp = GameObject.FindGameObjectWithTag("Player").GetComponent<RainDamage>();
-            playerHp.playerSize -= 50f;
-            Destroy(gameObject);
-            
-        }
-
-        if (other.CompareTag("Ground"))
-        {
-            Destroy(gameObject);
-        }
-    }
+    
 
 }

@@ -52,22 +52,26 @@ public class RainDamage : MonoBehaviour
         {
             //Deplete Size over time
             playerSize -= rainDamage * Time.deltaTime;
-            //IF the player size droped beneath 0
-            if (playerSize < 0)
-            {
-                playerSize = 0; //stop the health from going beneath 0
-            }
-
-            //IF the player size is 0
-            if (playerSize == 0)
-            {
-                //deactivate the player on death
-                playerRigid.gameObject.SetActive(false);
-            }
             //call function in another script to scale down the player size
             changeSize.Rescale(playerSize, maxSize);
             Debug.Log("Not in cover: DAMAGE TAKEN");
         }
+
+        //IF the player size droped beneath 0
+        if (playerSize < 0)
+        {
+            playerSize = 0; //stop the health from going beneath 0
+        }
+
+        //IF the player size is 0
+        if (playerSize == 0)
+        {
+            //deactivate the player on death
+            playerRigid.gameObject.SetActive(false);
+        }
+        
+
+
 
         /*  if (isExcess)
           {
