@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 136423249801665912}
   - component: {fileID: 114002912097683658}
   - component: {fileID: 114326581517588244}
+  - component: {fileID: 114599098808518212}
   - component: {fileID: 114388077582023254}
   - component: {fileID: 54004303226437844}
   m_Layer: 0
@@ -117,12 +118,76 @@ MonoBehaviour:
   playerRigid: {fileID: 54004303226437844}
   playerSize: 100
   maxSize: 100
-  excessSize: 150
   rainDamage: 2
-  excessBurnRate: 6
   inCover: 0
-  isExcess: 0
   changeSize: {fileID: 114388077582023254}
+  healthBar:
+    m_Name: 
+    m_Normal:
+      m_Background: {fileID: 2800000, guid: 37929dc62204ba946a89a9fe76df48e5, type: 3}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 0}
+    m_FontSize: 0
+    m_FontStyle: 0
+    m_Alignment: 0
+    m_WordWrap: 0
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
 --- !u!114 &114326581517588244
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -142,6 +207,7 @@ MonoBehaviour:
   dashSpeed: 9
   dashDir: {x: 0, y: 0, z: 0}
   isDashing: 0
+  playerHP: {fileID: 0}
 --- !u!114 &114388077582023254
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -156,6 +222,19 @@ MonoBehaviour:
   playerRigid: {fileID: 0}
   originalScale: {x: 0, y: 0, z: 0}
   currentScale: {x: 0, y: 0, z: 0}
+--- !u!114 &114599098808518212
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1311862093080194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b2d9e3d50a63a34c9089bfb29037675, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curCheckpoint: {fileID: 0}
+  charHP: {fileID: 0}
 --- !u!136 &136423249801665912
 CapsuleCollider:
   m_ObjectHideFlags: 1

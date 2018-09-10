@@ -3064,7 +3064,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1504052887}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.83, y: 1.69, z: -1.5431367}
+  m_LocalPosition: {x: -6.73, y: 1.54, z: -1.5431367}
   m_LocalScale: {x: 0.75000006, y: 0.75000006, z: 0.7499999}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3164,7 +3164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curCheckpoint: {fileID: 0}
-  charH: {fileID: 1504052896}
+  charHP: {fileID: 0}
 --- !u!4 &1510100101 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4735232670365966, guid: 4673b7df18631954ebf0a4f2c0d16388,
