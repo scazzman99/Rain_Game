@@ -20,7 +20,7 @@ public class DestroyDelay : MonoBehaviour {
         if (other.CompareTag("Player"))
         {
             RainDamage playerHp = GameObject.FindGameObjectWithTag("Player").GetComponent<RainDamage>();
-            playerHp.playerSize -= 30f;
+            playerHp.playerSize -= 50f;
             Destroy(gameObject);
             
         }

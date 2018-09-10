@@ -14,11 +14,13 @@ public class CharacterMovement : MonoBehaviour {
     public float dashSpeed = 10f; //adjusts the speed of the players dashing
     public Vector3 dashDir; //direction of the dash
     public bool isDashing; //are we dashing?
+    public RainDamage playerHP;
     #endregion
     // Use this for initialization
     void Start () {
         playerRigid = GameObject.Find("Player").GetComponent<Rigidbody>();
         dashDir = Vector3.zero; //set the initial dash direction to zero
+        playerHP = GetComponent<RainDamage>();
 
 	}
 	
@@ -101,7 +103,7 @@ public class CharacterMovement : MonoBehaviour {
         Ray groundRay = new Ray(playerRigid.position, Vector3.down);
         RaycastHit hit;
         //IF the raycast hits anything then we must be grounded
-        if(Physics.Raycast(groundRay, out hit, rayDistance))
+        if (Physics.Raycast(groundRay, out hit, rayDistance))
         {
             return true;
         }
