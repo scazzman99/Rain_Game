@@ -8,6 +8,8 @@ TagManager:
   - FireZone
   - DeathPit
   - Wood
+  - Ground
+  - DSpawn
   layers:
   - Default
   - TransparentFX
