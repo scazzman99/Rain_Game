@@ -13,7 +13,10 @@ public class CheckPoint : MonoBehaviour
     [Header("Character Handler")]
 
     //character handler script that holds the players health
-    public healthbar charH;
+    //public healthbar charH;
+
+    //This line would grab the current code that handles health directly
+    public RainDamageHpHandler charHP;
     #endregion
 
     #region Start
@@ -23,7 +26,8 @@ public class CheckPoint : MonoBehaviour
     {
 
         //the character handler is the component attached to our player
-        charH = this.GetComponent<healthbar>();
+        //charH = this.GetComponent<healthbar>();
+        charHP = GetComponent<RainDamageHpHandler>();
         #region Check if we have Key
         if (PlayerPrefs.HasKey("SpawnPoint"))
         {
@@ -40,20 +44,34 @@ public class CheckPoint : MonoBehaviour
     {
 
         //if our characters health is less than or equal to 0
-        if (charH.curHealth == 0)
+       /* if (charH.curHealth == 0)
         {
             //our transform.position is equal to that of the checkpoint
             transform.position = curCheckpoint.transform.position;
 
             //our characters health is equal to full health
             charH.curHealth = charH.maxHealth;
+
             //character is alive
             charH.alive = true;
 
             //characters controller is active	
-            charH.controller.enabled = true;
+            //charH.controller.enabled = true;
+
+           
 
 
+        }
+        */
+
+        //This if statement is in terms of the RainDamageHPHandler, previous if statement ended up locking the player in position for some reason
+        if(charHP.playerSize == 0)
+        {
+            transform.position = curCheckpoint.transform.position;
+
+            charHP.playerSize = charHP.maxSize;
+
+            charHP.gameObject.SetActive(true);
         }
 
 
