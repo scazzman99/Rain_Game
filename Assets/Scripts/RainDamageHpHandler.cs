@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RainDamage : MonoBehaviour
+public class RainDamageHpHandler : MonoBehaviour
 {
 
     #region Vars
@@ -15,6 +15,8 @@ public class RainDamage : MonoBehaviour
     public bool inCover; //are we in cover?
                          // public bool isExcess; //is the player over 100% hp
     public CharacterRescale changeSize; //gets the class of CharacterRescale so we can call resize
+    public GUIStyle healthBar;
+
 
     #endregion
     // Use this for initialization
@@ -90,6 +92,14 @@ public class RainDamage : MonoBehaviour
               Debug.Log("Burning Excess");
           }
           */
+    }
+
+    private void OnGUI()
+    {
+        float scrW = Screen.width / 16;
+        float scrH = Screen.height / 9;
+        GUI.Box(new Rect(scrW * 6f, scrH * 0.25f, scrW * 4, scrH), "");
+        GUI.Box(new Rect(scrW * 6f, scrH * 0.25f, scrW * 4 * (playerSize/maxSize) , scrH), "", healthBar);
     }
 
     private void OnTriggerStay(Collider other)
