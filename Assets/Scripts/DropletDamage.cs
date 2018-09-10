@@ -17,8 +17,11 @@ public class DropletDamage : MonoBehaviour {
         {
             //need to define playerHP in here on touch else null is thrown on player death
             playerHP = GameObject.FindGameObjectWithTag("Player").GetComponent<RainDamage>();
+            //take 50 from player health
             playerHP.playerSize -= 50f;
+            //call the rescale script
             playerHP.changeSize.Rescale(playerHP.playerSize, playerHP.maxSize);
+            //destroy the droplet
             Destroy(gameObject);
 
         }
