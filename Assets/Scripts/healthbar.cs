@@ -9,7 +9,7 @@ public class healthbar : MonoBehaviour {
 
     #region Character 
     public bool alive;
-    public CharacterController controller;
+    public Rigidbody controller;
     #endregion
     [Header("Health")]
     #region Health
@@ -27,7 +27,7 @@ public class healthbar : MonoBehaviour {
         maxHealth = 100f;
         curHealth = maxHealth;
         alive = true;
-        controller = this.GetComponent<CharacterController>();
+        controller = this.GetComponent<Rigidbody>();
 
 
     }
@@ -55,7 +55,8 @@ public class healthbar : MonoBehaviour {
         if (alive && curHealth == 0)
         {
             alive = false;
-            controller.enabled = false;
+            //Rigid body needs this to turn off
+            controller.gameObject.SetActive(false);
             Debug.Log("Disable on death");
 
         }

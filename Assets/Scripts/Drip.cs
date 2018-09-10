@@ -7,7 +7,7 @@ public class Drip : MonoBehaviour {
     public float vel;
     public Vector3 dir; //direction droplet will travel
     public GameObject drip; //droplet object that we will clone
-    public RainDamage playerHP; //script that manages player health
+    public RainDamageHpHandler playerHP; //script that manages player health
     public GameObject dripSpawn; //point that droplet spawns from
     public bool isDrip; //dictates if droplet can be made
     public float dripRate; //rate at which droplets will be created
@@ -17,7 +17,7 @@ public class Drip : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         dir = Vector3.down;
-        playerHP = GameObject.FindGameObjectWithTag("Player").GetComponent<RainDamage>();
+        playerHP = GameObject.FindGameObjectWithTag("Player").GetComponent<RainDamageHpHandler>();
     }
 	
 	// Update is called once per frame

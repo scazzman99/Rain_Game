@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DropletDamage : MonoBehaviour {
 
-    public RainDamage playerHP;
+    public RainDamageHpHandler playerHP;
 
     private void Start()
     {
@@ -16,7 +16,7 @@ public class DropletDamage : MonoBehaviour {
         if (other.CompareTag("Player"))
         {
             //need to define playerHP in here on touch else null is thrown on player death
-            playerHP = GameObject.FindGameObjectWithTag("Player").GetComponent<RainDamage>();
+            playerHP = GameObject.FindGameObjectWithTag("Player").GetComponent<RainDamageHpHandler>();
             //take 50 from player health
             playerHP.playerSize -= 50f;
             //call the rescale script

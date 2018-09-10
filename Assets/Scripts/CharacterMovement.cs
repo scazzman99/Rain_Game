@@ -14,13 +14,13 @@ public class CharacterMovement : MonoBehaviour {
     public float dashSpeed = 10f; //adjusts the speed of the players dashing
     public Vector3 dashDir; //direction of the dash
     public bool isDashing; //are we dashing?
-    public RainDamage playerHP;
+    public RainDamageHpHandler playerHP;
     #endregion
     // Use this for initialization
     void Start () {
         playerRigid = GameObject.Find("Player").GetComponent<Rigidbody>();
         dashDir = Vector3.zero; //set the initial dash direction to zero
-        playerHP = GetComponent<RainDamage>();
+        playerHP = GetComponent<RainDamageHpHandler>();
 
 	}
 	
@@ -34,10 +34,10 @@ public class CharacterMovement : MonoBehaviour {
             playerRigid.velocity = dashDir;
 
             //change the playerSize value in the RainDamage script attached to this object (the player)
-            GetComponent<RainDamage>().playerSize -= 8f * Time.deltaTime;
+            GetComponent<RainDamageHpHandler>().playerSize -= 8f * Time.deltaTime;
 
             //rescale the player based on the change above
-            GetComponent<CharacterRescale>().Rescale(GetComponent<RainDamage>().playerSize, GetComponent<RainDamage>().maxSize);
+            GetComponent<CharacterRescale>().Rescale(GetComponent<RainDamageHpHandler>().playerSize, GetComponent<RainDamageHpHandler>().maxSize);
 
             //IF the shiftKey is not being pressed
             if (!Input.GetKey(KeyCode.LeftShift))
@@ -82,9 +82,9 @@ public class CharacterMovement : MonoBehaviour {
                 playerRigid.AddForce(dashDir * 2f, ForceMode.Impulse);
 
                 //takes more fuel to start the dash than maintain it
-                GetComponent<RainDamage>().playerSize -= 9f;
+                GetComponent<RainDamageHpHandler>().playerSize -= 9f;
                 //rescale the player based on the health they lost
-                GetComponent<CharacterRescale>().Rescale(GetComponent<RainDamage>().playerSize, GetComponent<RainDamage>().maxSize);
+                GetComponent<CharacterRescale>().Rescale(GetComponent<RainDamageHpHandler>().playerSize, GetComponent<RainDamageHpHandler>().maxSize);
                 //we are now dashing
                 isDashing = true;
 
