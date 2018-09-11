@@ -18,6 +18,7 @@ public class Drip : MonoBehaviour {
 	void Start () {
         dir = Vector3.down;
         playerHP = GameObject.FindGameObjectWithTag("Player").GetComponent<RainDamageHpHandler>();
+        isDrip = true;
     }
 	
 	// Update is called once per frame
@@ -40,7 +41,8 @@ public class Drip : MonoBehaviour {
 
     public IEnumerator DropWaterSet()
     {
-        yield return new WaitForSecondsRealtime(dripRate);
+        //needs to use WaitForSeconds and not real time so it doesnt do stuff while paused
+        yield return new WaitForSeconds(dripRate);
         isDrip = true;
     }
 

@@ -45,7 +45,7 @@ public class CharacterMovement : MonoBehaviour {
                 //Stop dashing
                 isDashing = false;
                 //gives opposing force to help stop the player in the air
-                playerRigid.AddForce(-dashDir * 0.8f);
+                playerRigid.AddForce(-dashDir * 0.9f);
             }
         }
         else
@@ -82,7 +82,7 @@ public class CharacterMovement : MonoBehaviour {
                 playerRigid.AddForce(dashDir * 2f, ForceMode.Impulse);
 
                 //takes more fuel to start the dash than maintain it
-                GetComponent<RainDamageHpHandler>().playerSize -= 9f;
+                GetComponent<RainDamageHpHandler>().playerSize -= 6f;
                 //rescale the player based on the health they lost
                 GetComponent<CharacterRescale>().Rescale(GetComponent<RainDamageHpHandler>().playerSize, GetComponent<RainDamageHpHandler>().maxSize);
                 //we are now dashing

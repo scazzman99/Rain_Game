@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 [AddComponentMenu("FirstPerson/Checkpoint")]
 public class CheckPoint : MonoBehaviour
@@ -35,7 +36,13 @@ public class CheckPoint : MonoBehaviour
             curCheckpoint = GameObject.Find(PlayerPrefs.GetString("SpawnPoint"));
             //our transform.position is equal to that of the checkpoint
             transform.position = curCheckpoint.transform.position;
+        } else
+        {
+            curCheckpoint = GameObject.FindGameObjectWithTag("SpawnP");
+
+
         }
+                    transform.position = curCheckpoint.transform.position;
         #endregion
     }
     #endregion
@@ -88,6 +95,12 @@ public class CheckPoint : MonoBehaviour
             //save our SpawnPoint as the name of that object
             PlayerPrefs.SetString("SpawnPoint", curCheckpoint.name);
 
+        }
+        if (other.CompareTag("FinishP"))
+        {
+            curCheckpoint = GameObject.FindGameObjectWithTag("SpawnP");
+            PlayerPrefs.SetString("SpawnPoint", curCheckpoint.name);
+            SceneManager.LoadScene(0);
         }
 
     }

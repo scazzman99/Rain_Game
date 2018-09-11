@@ -112,4 +112,9 @@ public class MainMenu : MonoBehaviour
         Screen.fullScreen = toggle;
     }
 
+    public void PlayerPrefReset()
+    {
+        PlayerPrefs.DeleteKey("SpawnPoint");
+    }
+
 }

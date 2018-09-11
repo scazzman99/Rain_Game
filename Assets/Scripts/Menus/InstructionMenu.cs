@@ -9,5 +9,6 @@ public class InstructionMenu : MonoBehaviour {
     public void Continue()
     {
         SceneManager.LoadScene(2);
+        
     }
 }

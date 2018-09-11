@@ -10,6 +10,9 @@ TagManager:
   - Wood
   - Ground
   - DSpawn
+  - CheckPoint
+  - FinishP
+  - SpawnP
   layers:
   - Default
   - TransparentFX

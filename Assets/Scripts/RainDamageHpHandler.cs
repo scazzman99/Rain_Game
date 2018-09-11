@@ -69,7 +69,7 @@ public class RainDamageHpHandler : MonoBehaviour
         if (playerSize == 0)
         {
             //deactivate the player on death
-            playerRigid.gameObject.SetActive(false);
+            //playerRigid.gameObject.SetActive(false);
             
         }
         
@@ -97,10 +97,13 @@ public class RainDamageHpHandler : MonoBehaviour
 
     private void OnGUI()
     {
-        float scrW = Screen.width / 16;
-        float scrH = Screen.height / 9;
-        GUI.Box(new Rect(scrW * 6f, scrH * 0.25f, scrW * 4, scrH), "");
-        GUI.Box(new Rect(scrW * 6f, scrH * 0.25f, scrW * 4 * (playerSize/maxSize) , scrH), "", healthBar);
+        if (Time.timeScale == 1)
+        {
+            float scrW = Screen.width / 16;
+            float scrH = Screen.height / 9;
+            GUI.Box(new Rect(scrW * 6f, scrH * 0.25f, scrW * 4, scrH), "");
+            GUI.Box(new Rect(scrW * 6f, scrH * 0.25f, scrW * 4 * (playerSize / maxSize), scrH), "", healthBar);
+        }
     }
 
     private void OnTriggerStay(Collider other)
