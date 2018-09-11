@@ -70,6 +70,7 @@ public class RainDamageHpHandler : MonoBehaviour
         {
             //deactivate the player on death
             playerRigid.gameObject.SetActive(false);
+            
         }
         
 
